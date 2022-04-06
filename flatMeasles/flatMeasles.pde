@@ -95,6 +95,12 @@ Boolean nightMode=false; //IF-ELSE similar to ternary op
 color measleColour = (nightMode==false) ? color (255, random(0,50), random(0,120)) : color (255, random(0,50), 0) ; //ternary op for day:night
 color whiteReset=#000000;
 //
+float measleRectX = measleX-measleDiameter*1/2;
+float measleRectY = measleY-measleDiameter*1/2;
+float measleWidth = measleDiameter;
+float measleHeight = measleDiameter;
+rect( measleRectX, measleRectY, measleWidth, measleHeight );
+//
 //rect();
 //random values given other variables
 noStroke(); //shape outline
