@@ -10,6 +10,12 @@ float measleDiameter, measleRadius, measleX, measleY;
 Boolean nightMode=false;
 color measleColour, whiteReset;
 float measleRectX, measleRectY, measleWidth, measleHeight;
+PImage img, img2, img3, img4;
+//
+float imageX, imageY, imageWidth, imageHeight, imageWidthRatio=0.0, imageHeightRatio=0.0;
+float largerDimension, smallerDimension;
+PImage pic;
+Boolean widthLarger = false;
 void setup() 
 {
   //display geometry
@@ -36,6 +42,10 @@ if (orientation == "landscape or portrait") {
    */
   //
   //Variable Population
+  img = loadImage("mouth.png");
+  img2 = loadImage("eye.png");
+  img3 = loadImage("eye2.png");
+  img4 = loadImage("nose.png");
   smallerDisplayDimesion = appHeight; //always in landscape
   reset = smallerDisplayDimesion / smallerDisplayDimesion;
   rectFaceX = (appWidth*1/2) - (smallerDisplayDimesion*1/2);
@@ -54,7 +64,7 @@ if (orientation == "landscape or portrait") {
   mouthY1 = appHeight*3/4;
   mouthX2 = rightEyeX;
   mouthY2 = mouthY1;
-  mouthOpen = smallerDisplayDimesion*1/4;
+  mouthOpen = smallerDisplayDimesion*1/25;
   xNose1 = faceX;
   yNose1 = leftEyeY;
   xNose2 = faceX - leftEyeY*1/2;
@@ -69,15 +79,15 @@ if (orientation == "landscape or portrait") {
   //
   //Left Eye
   //rect(leftEyeX-eyeDiameter*1/2, leftEyeY-eyeDiameter*1/2, eyeDiameter, eyeDiameter);
-  ellipse(leftEyeX, leftEyeY, eyeDiameter, eyeDiameter);
+  //ellipse(leftEyeX, leftEyeY, eyeDiameter, eyeDiameter);
   //
   //Right Eye
   //rect(rightEyeX-eyeDiameter*1/2, rightEyeY-eyeDiameter*1/2, eyeDiameter, eyeDiameter);
-  ellipse(rightEyeX, rightEyeY, eyeDiameter, eyeDiameter);
+  //ellipse(rightEyeX, rightEyeY, eyeDiameter, eyeDiameter);
   //
   //Nose
   //rect(xNose2, yNose1, xNose3-xNose2, yNose3-yNose1);
-  triangle(xNose1, yNose1, xNose2, yNose2, xNose3, yNose3);
+  //triangle(xNose1, yNose1, xNose2, yNose2, xNose3, yNose3);
   //
   //Mouth
   int mouthWidth = int (mouthX2 - mouthX1);
@@ -89,13 +99,19 @@ if (orientation == "landscape or portrait") {
   //comparison rect() line only no caps no strokeweight
   //rect(mouthX1, mouthY1, mouthWidth, mouthHeight);
   //
+  //rect1
+  //rect(830, 25, 280, 1025);
+  //rect2
+  //rect(600, 100, 480, 150);
+  //rect3
+  //rect(460, 400, 1000, 300);
 }
 //
 void draw() 
 {
   //Measle
   float measleDiameter = random (smallerDisplayDimesion*1/100, smallerDisplayDimesion*1/25); //small measle = *1/100, large measle = *1/25
-  float measleRadius = measleDiameter*1/2;
+  float measleRadius = measleDiameter*1/3;
   println ((measleDiameter*1/2));
   float measleX = random(rectFaceX+measleRadius, ((rectFaceX+rectFaceWidth) - measleRadius));
   float measleY = random(rectFaceY+measleRadius, ((rectFaceY+rectFaceHeight) - measleRadius));
@@ -115,18 +131,14 @@ void draw()
   ellipse(measleX, measleY, measleDiameter, measleDiameter);
   stroke(reset); //to one pixel
   fill(whiteReset);
-    //
+  //
   //Left Eye
   //rect(leftEyeX-eyeDiameter*1/2, leftEyeY-eyeDiameter*1/2, eyeDiameter, eyeDiameter);
-  ellipse(leftEyeX, leftEyeY, eyeDiameter, eyeDiameter);
+  //ellipse(leftEyeX, leftEyeY, eyeDiameter, eyeDiameter);
   //
   //Right Eye
   //rect(rightEyeX-eyeDiameter*1/2, rightEyeY-eyeDiameter*1/2, eyeDiameter, eyeDiameter);
-  ellipse(rightEyeX, rightEyeY, eyeDiameter, eyeDiameter);
-  //
-  //Nose
-  //rect(xNose2, yNose1, xNose3-xNose2, yNose3-yNose1);
-  triangle(xNose1, yNose1, xNose2, yNose2, xNose3, yNose3);
+  //ellipse(rightEyeX, rightEyeY, eyeDiameter, eyeDiameter);
   //
   //Mouth
   int mouthWidth = int (mouthX2 - mouthX1);
@@ -137,6 +149,15 @@ void draw()
   strokeWeight(reset); //to one pixel
   //comparison rect() line only no caps no strokeweight
   //rect(mouthX1, mouthY1, mouthWidth, mouthHeight);
+  //
+  //mouth
+  image(img, 600, 475, 750, 750);
+  //right eye
+  image(img2, 1050, 115, 400, 400);
+  //lefteye
+  image(img3, 500, 170, 400, 220);
+  //nose
+  image(img4, 820, 200, 310, 400);
 }
 //
 void keyPressed()
