@@ -16,6 +16,14 @@ float imageX, imageY, imageWidth, imageHeight, imageWidthRatio=0.0, imageHeightR
 float largerDimension, smallerDimension;
 PImage pic;
 Boolean widthLarger = false;
+//
+String title = "we can see you";
+float titleX, titleY, titleWidth, titleHeight;
+PFont titleFont;
+color red=#FF007C, resetDefaultInk=#FFFFFF;
+//
+String bottom = "were in your walls";
+float bottomX, bottomY, bottomWidth, bottomHeight;
 void setup() 
 {
   //display geometry
@@ -71,6 +79,14 @@ if (orientation == "landscape or portrait") {
   yNose2 = faceY ;
   xNose3 = faceX + leftEyeY*1/2;
   yNose3 = faceY ;
+  titleX = displayWidth*1/5;
+  titleY = displayHeight*1/30;
+  titleWidth = displayWidth*3/5;
+  titleHeight = displayHeight*1/10;
+  bottomX = displayWidth*1/5;
+  bottomY = displayHeight*1/1.2;
+  bottomWidth = displayWidth*3/5;
+  bottomHeight = displayHeight*1/10;
   //
   //Face - circle
   //Center a circle on display orientation
@@ -105,6 +121,8 @@ if (orientation == "landscape or portrait") {
   //rect(600, 100, 480, 150);
   //rect3
   //rect(460, 400, 1000, 300);
+  //nose
+  image(img4, 820, 200, 310, 400);
 }
 //
 void draw() 
@@ -156,8 +174,20 @@ void draw()
   image(img2, 1050, 115, 400, 400);
   //lefteye
   image(img3, 500, 170, 400, 220);
-  //nose
-  image(img4, 820, 200, 310, 400);
+  //
+  titleFont = createFont ("Comic Sans MS", 55);
+  fill(red);
+  textAlign(CENTER, CENTER);
+  textFont(titleFont, 77);
+  text(title, titleX, titleY, titleWidth, titleHeight);
+  fill(resetDefaultInk);
+  //  
+  titleFont = createFont ("Comic Sans MS", 55);
+  fill(red);
+  textAlign(CENTER, CENTER);
+  textFont(titleFont, 77);
+  text(bottom, bottomX,bottomY, bottomWidth, bottomHeight);
+  fill(resetDefaultInk);
 }
 //
 void keyPressed()
