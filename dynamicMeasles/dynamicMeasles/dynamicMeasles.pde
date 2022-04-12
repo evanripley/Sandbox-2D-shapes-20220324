@@ -1,4 +1,7 @@
 //global variables
+int appWidth, appHeight;
+color resetWhite=#FFFFFF;
+//
 int reset, smallerDisplayDimesion, mouthOpen;
 float rectFaceX, rectFaceY, rectFaceWidth, rectFaceHeight;
 float faceX, faceY, faceDiameter;
@@ -123,6 +126,8 @@ if (orientation == "landscape or portrait") {
   //rect(460, 400, 1000, 300);
   //nose
   image(img4, 820, 200, 310, 400);
+  displayOrientation();
+  population();
 }
 //
 void draw() 
@@ -186,16 +191,19 @@ void draw()
   fill(red);
   textAlign(CENTER, CENTER);
   textFont(titleFont, 77);
-  text(bottom, bottomX,bottomY, bottomWidth, bottomHeight);
+  text(bottom, bottomX, bottomY, bottomWidth, bottomHeight);
   fill(resetDefaultInk);
+  quitButtonDraw();
 }
 //
 void keyPressed()
 {
+  quitButtonKeyPressed();
 }
 //
 void mousePressed() 
 {
+  quitButtonMousePressed();
 }
 //
 //end
